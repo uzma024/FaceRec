@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+<!-- Features section-->
+
+<section class="py-5 border-bottom" id="features">
+      <div class="row">
+            <div class="card border-success mb-3" style="max-width: 18rem;">
+                  <div class="card-header bg-transparent border-success">New Student</div>
+                  <div class="card-body text-dark">
+                        <h5 class="card-title">Enter Details</h5>
+                        <p class="card-text">
+                        <form action="/capture" method="POST">
+                              <div class="mb-3">
+                                    <input type="text" class="form-control" name="sno" id="sno" aria-describedby="sno"
+                                          placeholder="Roll No">
+                              </div>
+                              <div class="mb-3">
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                              </div>
+                              <div class="card-footer bg-transparent border-success">
+                                    <button type="submit" class="btn btn-outline-dark btn-sm mx-1">Capture</button>
+                              </div>
+                        </form>
+                        </p>
+                  </div>
+
+            </div>
+            <div class="card border-success mb-3" style="max-width: 18rem;">
+                  <div class="card-header bg-transparent border-success">Attendance</div>
+                  <div class="card-body text-dark">
+                        <h5 class="card-title">Enter Subject</h5>
+                        <p class="card-text">
+                              Enter subject to mark attendance for.
+                        </p>
+                        <form action="/mark" method="POST">
+                              <div class="mb-3">
+                                    <input type="text" class="form-control" name="subject" id="subject"
+                                          aria-describedby="subject" placeholder="Subject">
+                              </div>
+                              <div class="card-footer bg-transparent border-success">
+                                    <button type="submit" class="btn btn-outline-dark btn-sm mx-1">Detect Face</button>
+                              </div>
+                        </form>
+
+                  </div>
+
+            </div>
+            <div class="card border-success mb-3" style="max-width: 18rem;">
+                  <div class="card-header bg-transparent border-success">Check Attendance</div>
+                  <div class="card-body text-dark">
+                        <p class="card-text">
+                        <form action="/" method="POST">
+                              <div class="mb-3">
+                                    <input type="text" class="form-control" name="sno" id="sno" aria-describedby="sno"
+                                          placeholder="Roll No">
+                              </div>
+                              <div class="mb-3">
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                              </div>
+                              <div class="mb-3">
+                                    <input type="text" class="form-control" name="sub" id="sub" placeholder="Subject">
+                              </div>
+                              <div class="card-footer bg-transparent border-success">
+                                    <button type="submit" class="btn btn-outline-dark btn-sm mx-1k">Submit</button>
+                              </div>
+                        </form>
+                        </p>
+                  </div>
+
+            </div>
+            <div class="card border-success mb-3" style="max-width: 18rem;">
+                  <div class="card-header bg-transparent border-success">Delete Existing Student</div>
+                  <div class="card-body text-dark">
+                        <h5 class="card-title">Enter Details</h5>
+                        <p class="card-text">
+                        <form action="/delete" method="POST">
+                              <div class="mb-3">
+                                    <input type="text" class="form-control" name="sno" id="sno" aria-describedby="sno"
+                                          placeholder="Roll No">
+                              </div>
+                              <div class="mb-3">
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                              </div>
+                              <div class="card-footer bg-transparent border-success">
+                                    <button type="submit" class="btn btn-outline-dark btn-sm mx-1">Delete</button>
+                              </div>
+                        </form>
+                        </p>
+                  </div>
+
+            </div>
+      </div>
+
+
+</section>
+
+
+{% endblock body %}

@@ -1,0 +1,15 @@
+#pricing{
+    padding: 100px;
+    text-align: center;
+}
+
+body{
+    background-color: red;
+}
+.row{
+    padding: 5% 7%;
+}
+
+.card{
+    margin: 2% 5%;
+}
