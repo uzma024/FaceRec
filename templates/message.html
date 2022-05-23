@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{title}}
+{% endblock title %}
+
+{% block body %}
+<div class="jumbotron jumbotron-fluid" style="padding-left:50px;">
+    <div class="container">
+      <h1 class="display-4">{{message_head}}</h1>
+      <p class="lead">{{message_body}}</p>
+      <img src="{{ url_for('static', filename='images/{{ImgName}}.svg') }}" alt="">
+    </div>
+  </div>
+{% endblock body %}
