@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Capture{% endblock %}
+{% block title %}Mark Presence{% endblock %}
 
 
 {% block body %}
@@ -9,7 +9,8 @@
         <canvas style="display: none;" id="canvas" width="320" height="240"></canvas>
     </div>
     <p style="display: none" id="sno">{{ sno }}</p>
-    <p style="display: none" id="username">{{ name }}</p>
+    <p style="display: none" id="name">{{ name }}</p>
+    <p style="display: none" id="subject">{{ subject }}</p>
     <div class="controls">
         <button type="submit" id="capture"><i class="btn fas fa-camera" onclick=""></i></button>
         <button onclick="(e) => e.preventDefault()" id="stop"><i class="btn fas fa-video-slash"></i></button>
@@ -17,19 +18,20 @@
     <h2 id="res-prediction"></h2>
 </main>
 
-<main class="result" id="success" style="display: none">
-    <h1>Successfully authenticated, Have a nice day.</h1>
-    <img src="{{ url_for('static', filename='images/Registered.svg') }}" alt="">
+<main class="result" id="att_success" style="display: none">
+    <h1>Successfully Marked {{name}}'s attendance for {{subject}}</h1>
+    <img src="{{ url_for('static', filename='images/Study.svg') }}" alt="">
 </main>
 
 <main class="result" id="failure" style="display: none">
-    <h1>Failure, error while adding face to database.</h1>
+    <h1>You are not a registered student.Your attendance was not marked</h1>
     <img src="{{ url_for('static', filename='images/Failure.svg') }}" alt="">
 </main>
+
 {% endblock body %}
 
 
 {% block javascript %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/script2.js') }}"></script>
 {% endblock javascript%}

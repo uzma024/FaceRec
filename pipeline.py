@@ -8,6 +8,10 @@ from torchvision import datasets
 import matplotlib.pyplot as plt
 import torch
 
+import datetime
+import time
+import pandas as pd
+
 #n_faces_detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 mtcnn = MTCNN(image_size=240, margin=20,  post_process=False, keep_all=True, min_face_size=20) #initializing mtcnn for face detection
 resnet = InceptionResnetV1(pretrained='vggface2').eval()
@@ -94,8 +98,40 @@ def update_embeddings():
     data = [embedding_list, name_list]
     torch.save(data, 'data.pt')
 
+def add_to_csv(subject,user_sno,user_name):
+    # Add name to attendance list
+    print("Subject:",subject)
+    path=os.path.join('/Users/uzmafirozkhan/Desktop/AttendanceFinal/Attendance/',subject)
+    if not os.path.isdir(path):
+        os.mkdir(path)
+    # GET DATE AND TIME
+    ts = time.time()
+    date = datetime.datetime.fromtimestamp(ts).strftime("%Y-%m-%d")
+    timeStamp = datetime.datetime.fromtimestamp(ts).strftime("%H:%M:%S")
+    Hour, Minute, Second = timeStamp.split(":")
+    # Assuming each class is of not more than 1 hr
+    # i.e. different hr means different class of same day
+    fileName = (
+        f"{path}/"
+        + subject
+        + "_"
+        + date
+        + "_"
+        + Hour
+        + ".csv"
+    )
+    # take out student name
+    # studentdetail_path = "/Users/uzmafirozkhan/Desktop/AttendanceFinal/StudentDetails/studentdetails.csv"
+    # df = pd.read_csv(studentdetail_path)
+    # Student_sno = df.loc[df["Enrollment"] == Student_sno]["Name"].values
+    # Data of file
+    col_names = ["Enrollment number", "Name","Date", "Time"]
+    attendance = pd.DataFrame(columns=col_names)
+    attendance.loc[len(attendance)] = [user_sno,user_name,date,timeStamp]
+    attendance.to_csv(fileName, index=False)
 
-def log(image, user):
+
+def log(image, user_sno ,user_name,subject):
     faces, probs = mtcnn(image, return_prob=True)
     update_embeddings()
 
@@ -120,9 +156,11 @@ def log(image, user):
     if out == False:
         return 'No Match Found'
     else:
-        if out[0] != user:
+        if out[0] != user_sno:
             return 'No Match Found'
-
-        return out
+        else:
+        # Add name to attendance list
+            add_to_csv(subject,user_sno,user_name)
+            return out
     # else:
     #     return 'Fake Face Detected'

@@ -107,8 +107,30 @@ def checkImage():
             # return render_template('message.html',ImgName="present",title="Faliure",message_head="Roll no already present" ,message_body='The user is already registered in the database try something different')
         return jsonify(response)
     else:
-        # user came via login
-        log_res = log(image, sno)
+        # Student came for attendance
+        response = { 'prediction': { 'result': 'There is already a user with the same name, try something different' } }
+        return jsonify(response)
+
+@app.route('/test-image-att', methods=['POST'])
+def checkImage_att():
+    filename = f'{uuid.uuid4().hex}.jpeg'
+    message = request.get_json(force=True)
+    encoded = message['image']
+    decoded = b64decode(encoded)
+    image = Image.open(io.BytesIO(decoded)) 
+
+    sno = message['sno']
+    Std_name = message['name']
+    sub = message['subject']
+    print('user roll no: ', sno,Std_name,"Subject: ",sub)
+    foundUser = Student.query.filter_by(sno=sno).first()
+    print('filename outer: ', filename)
+
+    if foundUser == None:
+        render_template("message.html",ImgName="present",title="Faliure",message_head="Roll no not found" ,message_body='The user is not registered in the database')
+    else:
+        # Student came for attendance
+        log_res = log(image, sno,Std_name,sub)
         if (type(log_res) == str):
             print('Login Response: ', log_res)
             response = { 'prediction': { 'result': log_res } }
@@ -117,13 +139,20 @@ def checkImage():
         return jsonify(response)
 
 
-
 @app.route("/mark",methods=['GET','POST'])
 def mark_attendance():
-    print("inside Mark Att Function")
-    sub= (request.form['subject'])
-    automaticAttedance.subjectChoose(text_to_speech,sub)
-    return redirect("/")
+    if request.method=="POST":
+        print("inside Mark Att Function")
+        sub= request.form['subject']
+        sno= request.form['Roll']
+        student = Student.query.filter_by(sno=sno).first()
+        if Student == None:
+            return render_template('messages.html',ImgName="present",title="Faliure",message_head="Roll number was not found", message='Student Roll number was not found in the database')
+        else:
+            return render_template('attendance.html',sno=student.sno, name=student.name,subject=sub)
+    else:
+        return render_template('index.html')
+# return redirect("/")
 
 
 @app.route("/show")

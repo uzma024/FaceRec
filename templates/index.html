@@ -32,9 +32,13 @@
                   <div class="card-body text-dark">
                         <h5 class="card-title">Enter Subject</h5>
                         <p class="card-text">
-                              Enter subject to mark attendance for.
+                              Enter attendance details.
                         </p>
                         <form action="/mark" method="POST">
+                              <div class="mb-3">
+                                    <input type="text" class="form-control" name="Roll" id="Roll"
+                                          aria-describedby="Roll" placeholder="Roll Number">
+                              </div>
                               <div class="mb-3">
                                     <input type="text" class="form-control" name="subject" id="subject"
                                           aria-describedby="subject" placeholder="Subject">
@@ -51,7 +55,7 @@
                   <div class="card-header bg-transparent border-success">Check Attendance</div>
                   <div class="card-body text-dark">
                         <p class="card-text">
-                        <form action="/" method="POST">
+                        <form action="/check" method="POST">
                               <div class="mb-3">
                                     <input type="text" class="form-control" name="sno" id="sno" aria-describedby="sno"
                                           placeholder="Roll No">

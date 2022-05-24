@@ -1,9 +1,9 @@
-console.log("This is javascript");
+console.log("This is javascript2");
 const video = document.querySelector("#videoElement");
 const showVideo = document.querySelector("#stop");
 const icon = document.querySelector("#stop .btn");
 
-console.log("This is javascript");
+console.log("This is javascript2");
 function stop() {
     let stream = video.srcObject;
     let tracks = stream.getTracks();
@@ -43,10 +43,10 @@ const canvas = document.querySelector("#canvas");
 const input = document.getElementById('imageInput');
 const form = document.getElementById('postImage');
 const user_sno = document.getElementById('sno');
-const user_name = document.getElementById('username');
+const user_name = document.getElementById('name');
+const Sub = document.getElementById('subject');
 
 const main_main = document.getElementById('main')
-const main_success = document.getElementById('success')
 const main_success_att = document.getElementById('att_success')
 const main_failure = document.getElementById('failure')
 const camera_button = document.getElementById('capture')
@@ -69,21 +69,20 @@ capture.addEventListener('click', (e) => {
 
         let img_src = canvas.toDataURL('image/jpeg');
         let src = img_src.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
-        let message = { image: src, sno: user_sno.innerText, name: user_name.innerText};
+        let message = { image: src, sno: user_sno.innerText, name: user_name.innerText,subject:Sub.innerText};
         console.log("Here is your message: " + message);
-        $.post('/test-image', JSON.stringify(message), response => {
+        $.post('/test-image-att', JSON.stringify(message), response => {
             $("#res-prediction").text(response.prediction.result)
             console.log(response);
             main_main.style.display = "none";
             console.log("This is response: "+response.prediction.result);
             var found=false;
 
-            if(success_page[1] == response.prediction.result){
-                console.log("Successfully taken attendance");
-                main_success.style.display = 'block';
+            if(success_page[0] == response.prediction.result){
+                console.log("Success");
+                main_success_att.style.display = 'block';
                 found=true;
             }
-            
             if(!found){
                 console.log("Failure");
                 main_failure.style.display = 'block';
