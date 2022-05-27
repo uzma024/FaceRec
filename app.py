@@ -1,3 +1,4 @@
+from email.mime import message
 from unicodedata import name
 from flask import Flask, make_response, redirect,render_template, request,redirect,jsonify,url_for
 from flask_sqlalchemy import SQLAlchemy
@@ -24,10 +25,10 @@ def text_to_speech(user_text):
 app = Flask(__name__)
 
 haarcasecade_path = cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
-trainimagelabel_path = "/Users/uzmafirozkhan/Desktop/AttendanceFinal/TrainingImageLabel/Trainner.yml"
-trainimage_path = "/Users/uzmafirozkhan/Desktop/AttendanceFinal/TrainingImage"
-studentdetail_path = "/Users/uzmafirozkhan/Desktop/AttendanceFinal/StudentDetails/studentdetails.csv"
-attendance_path = "/Users/uzmafirozkhan/Desktop/AttendanceFinal/Attendance"
+# trainimagelabel_path = "/Users/uzmafirozkhan/Desktop/AttendanceFinal/TrainingImageLabel/Trainner.yml"
+# trainimage_path = "/Users/uzmafirozkhan/Desktop/AttendanceFinal/TrainingImage"
+# studentdetail_path = "/Users/uzmafirozkhan/Desktop/AttendanceFinal/StudentDetails/studentdetails.csv"
+# attendance_path = "/Users/uzmafirozkhan/Desktop/AttendanceFinal/Attendance"
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Student.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -153,13 +154,32 @@ def mark_attendance():
         sno= request.form['Roll']
         student = Student.query.filter_by(sno=sno).first()
         if Student == None:
-            return render_template('messages.html',ImgName="present",title="Faliure",message_head="Roll number was not found", message='Student Roll number was not found in the database')
+            return render_template('message.html',ImgName="present",title="Faliure",message_head="Roll number was not found", message='Student Roll number was not found in the database')
         else:
             return render_template('attendance.html',sno=student.sno, name=student.name,subject=sub)
     else:
         return render_template('index.html')
 # return redirect("/")
 
+@app.route("/check",methods=['GET','POST'])
+def check_att():
+    if request.method=="POST":
+        print("inside check Att Function")
+        sub= request.form['subject']
+        date= request.form['date'].split("-")
+        time= request.form['time'].split(":")
+        print("sub: ",sub)
+        print("date: ",date)
+        print("time: ",time)
+        file_name=sub + '_' +date[0] + '-' +date[1] + '-' +date[2] + '_' +time[0]+'.csv'
+        print("File_name: ",file_name)
+        p = os.path.join('Attendance',sub,file_name)
+        if os.path.isfile(p):
+            data = pd.read_csv(p)
+            return render_template('tables.html', tables=[data.to_html()], titles=[''])
+    return render_template('message.html',ImgName="present",title="Faliure",message_head="File Not found", message='No attendance present for the given subject,date and time')
+        
+  
 @app.route("/view")
 def view():
     allToStudents = Student.query.all()
@@ -213,8 +233,7 @@ def delete():
             return render_template('message.html',ImgName="null",title="Faliure",message_head="Cannot remove admin", message='Please Enter valid serial number.')        
         temp = Student.query.filter_by(sno=sno).first()
 
-        location = "/Users/uzmafirozkhan/Desktop/AttendanceFinal/database"
-        path = os.path.join(location, temp.sno)
+        path = os.path.join('database',temp.sno)
         shutil.rmtree(path, ignore_errors=True)
         # print("Very Dangerous test executed")
 
