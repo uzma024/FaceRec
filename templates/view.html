@@ -6,7 +6,7 @@ All Students
 {% block body %}
 <div class="container">
     <h2>Student Database:</h2>
-    {% if allToStudents|length == 0 %}
+    {% if allToStudents|length <= 1 %}
     <div class="alert alert-dark" role="alert">
         No Students.
     </div>
@@ -23,14 +23,10 @@ All Students
         <tbody>
             {% for std in allToStudents %}
             {% if std.sno != "-1" %}
-            <tr>
-                <th scope="row">{{std.sno}}</th>
-                <td>{{std.name}}</td>
-                <td>
-                    <!-- <a href="/update/{{std.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Edit</a> -->
-                    <a href="/delete/{{std.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Delete</a>
-                </td>
-            </tr>
+                <tr>
+                    <th scope="row">{{std.sno}}</th>
+                    <td>{{std.name}}</td>
+                </tr>
             {% endif %}
 
             {% endfor %}

@@ -125,11 +125,52 @@ def add_to_csv(subject,user_sno,user_name):
     # df = pd.read_csv(studentdetail_path)
     # Student_sno = df.loc[df["Enrollment"] == Student_sno]["Name"].values
     # Data of file
-    col_names = ["Enrollment number", "Name","Date", "Time"]
-    attendance = pd.DataFrame(columns=col_names)
-    attendance.loc[len(attendance)] = [user_sno,user_name,date,timeStamp]
-    attendance.to_csv(fileName, index=False)
+    if not os.path.isfile(fileName):
+        col_names = ["Enrollment number", "Name","Date", "Time"]
+        attendance = pd.DataFrame(columns=col_names)
+        attendance.loc[len(attendance)] = [user_sno,user_name,date,timeStamp]
+        attendance.to_csv(fileName, index=False)
+    else:
+        attendance = pd.DataFrame({'Enrollment number': [user_sno],
+                                    'Name': [user_name],
+                                    'Date': [date],
+                                    'Time': [timeStamp]})
+        attendance.to_csv(fileName, mode='a', index=False, header=False)
 
+def log2(image, user_sno):
+    faces, probs = mtcnn(image, return_prob=True)
+    update_embeddings()
+
+    if faces == None:
+        return 'No Face Detected'
+
+    for face, prob in zip(faces, probs):
+        if prob<0.80:
+            faces.remove(face)
+
+    if faces == None:
+        return 'No Face Detected'        
+    elif faces.shape[0] > 1:
+        return 'Multiple Faces Detected'
+
+    face = faces[0]
+    fname = 'temp.jpg'
+    img = face.permute(1, 2, 0).int().numpy().astype('uint8')
+    plt.imsave(fname, img)
+    # if realvfake(fname):
+    out = face_match(image)
+    print("Admin Check:",out)
+    if out == False:
+        return 'No Match Found'
+    else:
+        if out[0] != user_sno:
+            return 'No Match Found'
+        elif user_sno == -1:
+            return out
+    # else:
+    #     return 'Fake Face Detected'
+
+# STUDENT ATTENDANCE
 
 def log(image, user_sno ,user_name,subject):
     faces, probs = mtcnn(image, return_prob=True)

@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+<!-- Features section-->
+<main id="main">
+      <div class="camera">
+            <video autoplay="true" id="videoElement"></video>
+            <canvas style="display: none;" id="canvas" width="320" height="240"></canvas>
+      </div>
+      <p style="display: none" id="sno">{{ sno }}</p>
+      <p style="display: none" id="username">{{ name }}</p>
+      <div class="controls">
+            <button type="submit" id="capture"><i class="btn fas fa-camera" onclick=""></i></button>
+            <button onclick="(e) => e.preventDefault()" id="stop"><i class="btn fas fa-video-slash"></i></button>
+      </div>
+      <h2 id="res-prediction"></h2>
+</main>
+
+<main class="result" id="success" style="display: none">
+
+      <div class="alert alert-success alert-dismissible fade show">
+            <strong>Success!</strong> Successfully logged in as {{name}} .
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+      <section class="py-5 border-bottom" id="features">
+            <div class="row">
+                  <div class="card border-success mb-3" style="max-width: 18rem;">
+                        <div class="card-header bg-transparent border-success">Delete Existing Student</div>
+                        <div class="card-body text-dark">
+                              <h5 class="card-title">Enter Details</h5>
+                              <p class="card-text">
+                              <form action="/delete" method="POST">
+                                    <div class="mb-3">
+                                          <input type="text" class="form-control" name="sno" id="sno"
+                                                aria-describedby="sno" placeholder="Roll No">
+                                    </div>
+                                    <div class="mb-3">
+                                          <input type="text" class="form-control" name="name" id="name"
+                                                placeholder="Name">
+                                    </div>
+                                    <div class="card-footer bg-transparent border-success">
+                                          <button type="submit" class="btn btn-outline-dark btn-sm mx-1">Delete</button>
+                                    </div>
+                              </form>
+                              </p>
+                        </div>
+
+                  </div>
+                  <div class="card border-success mb-3" style="max-width: 18rem;">
+                        <div class="card-header bg-transparent border-success">New Student</div>
+                        <div class="card-body text-dark">
+                              <h5 class="card-title">Enter Details</h5>
+                              <p class="card-text">
+                              <form action="/capture" method="POST">
+                                    <div class="mb-3">
+                                          <input type="text" class="form-control" name="sno" id="sno"
+                                                aria-describedby="sno" placeholder="Roll No">
+                                    </div>
+                                    <div class="mb-3">
+                                          <input type="text" class="form-control" name="name" id="name"
+                                                placeholder="Name">
+                                    </div>
+                                    <div class="card-footer bg-transparent border-success">
+                                          <button type="submit"
+                                                class="btn btn-outline-dark btn-sm mx-1">Capture</button>
+                                    </div>
+                              </form>
+                              </p>
+                        </div>
+
+                  </div>
+                  <div class="card border-success mb-3" style="max-width: 18rem;">
+                        <div class="card-header bg-transparent border-success">Update Student Name</div>
+                        <div class="card-body text-dark">
+                              <p class="card-text">
+                              <form action="/update" method="POST">
+                                    <div class="mb-3">
+                                          <input type="text" class="form-control" name="sno" id="sno"
+                                                aria-describedby="sno" placeholder="Roll No">
+                                    </div>
+                                    <div class="mb-3">
+                                          <input type="text" class="form-control" name="name" id="name"
+                                                placeholder="Name">
+                                    </div>
+                                    <div class="mb-3">
+                                          <input type="text" class="form-control" name="new-name" id="new-name"
+                                                placeholder="New Name">
+                                    </div>
+                                    <div class="card-footer bg-transparent border-success">
+                                          <button type="submit" class="btn btn-outline-dark btn-sm mx-1">Update</button>
+                                    </div>
+                              </form>
+                              </p>
+                        </div>
+
+                  </div>
+                  <div class="card border-success mb-3" style="max-width: 18rem;">
+                        <div class="card-header bg-transparent border-success">Show Student databse</div>
+                        <div class="card-body text-dark">
+                              <p class="card-text">Check and edit student database.</p>
+                              <div class="card-footer bg-transparent border-success">
+                                    <a href="/show-admin" type="button" class="btn btn-outline-dark btn-sm mx-1">Check Database</a>
+                                    <!-- <input href="/show-admin" type="button" value="Check Database"> -->
+                              </div>
+                        </div>
+
+                  </div>
+            </div>
+
+            <img class="msg" src="{{ url_for('static', filename='images/Study.svg') }}" alt="">
+            <div class="alert alert-primary" role="alert">
+                  <p style="display: inline-block;">Currently logged in as admin: {{admin_name}} . Please logout before
+                        leaving the device.</p>
+                  <a href="/logout" type="button" class="btn btn-outline-dark btn-sm mx-1">Log out</a>
+            </div>
+      </section>
+      <!-- <button href="/" class="btn btn-dark btn-lg">Home</button> -->
+</main>
+
+<main class="result" id="failure" style="display: none">
+      <div class="alert alert-danger alert-dismissible fade show">
+          <strong>Error!</strong> Failure, Unable to login as {{sno}} {{name}} .
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+      <img class="msg" src="{{ url_for('static', filename='images/Failure.svg') }}" alt="">
+  </main>
+{% endblock body %}
+
+
+{% block javascript %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+{% endblock javascript%}

@@ -18,13 +18,27 @@
 </main>
 
 <main class="result" id="success" style="display: none">
-    <h1>Successfully authenticated, Have a nice day.</h1>
-    <img src="{{ url_for('static', filename='images/Registered.svg') }}" alt="">
+    <div class="alert alert-success alert-dismissible fade show">
+        <strong>Student added!</strong> Successfully authenticated, Have a nice day.
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    <img class="msg" src="{{ url_for('static', filename='images/Registered.svg') }}" alt="">
+</main>
+
+<main class="result" id="success" style="display: none">
+    <div class="alert alert-success alert-dismissible fade show">
+        <strong>Student added!</strong> Successfully authenticated, Have a nice day.
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    <img class="msg" src="{{ url_for('static', filename='images/Registered.svg') }}" alt="">
 </main>
 
 <main class="result" id="failure" style="display: none">
-    <h1>Failure, error while adding face to database.</h1>
-    <img src="{{ url_for('static', filename='images/Failure.svg') }}" alt="">
+    <div class="alert alert-danger alert-dismissible fade show">
+        <strong>Error!</strong> Failure, could not add student face to database.
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    <img class="msg" src="{{ url_for('static', filename='images/Failure.svg') }}" alt="">
 </main>
 {% endblock body %}
 

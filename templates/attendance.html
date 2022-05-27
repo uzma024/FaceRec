@@ -19,13 +19,22 @@
 </main>
 
 <main class="result" id="att_success" style="display: none">
-    <h1>Successfully Marked {{name}}'s attendance for {{subject}}</h1>
-    <img src="{{ url_for('static', filename='images/Study.svg') }}" alt="">
+    <div class="alert alert-success alert-dismissible fade show">
+        <strong>Success!</strong> Successfully Marked {{name}}'s attendance for {{subject}}.
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    <img class="msg" src="{{ url_for('static', filename='images/Study.svg') }}" alt="">
+    <!-- <button href="/" class="btn btn-dark btn-lg">Home</button> -->
 </main>
 
 <main class="result" id="failure" style="display: none">
-    <h1>You are not a registered student.Your attendance was not marked</h1>
-    <img src="{{ url_for('static', filename='images/Failure.svg') }}" alt="">
+    <div class="alert alert-danger alert-dismissible fade show">
+        <strong>Error!</strong> You are not a registered student.Your attendance was not marked.
+        <!-- <button href="/" class="btn btn-dark btn-lg">Home</button> -->
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    <img class="msg" src="{{ url_for('static', filename='images/Failure.svg') }}" alt="">
+   
 </main>
 
 {% endblock body %}

@@ -8,7 +8,11 @@
     <div class="container">
       <h1 class="display-4">{{message_head}}</h1>
       <p class="lead">{{message_body}}</p>
-      <img src="{{ url_for('static', filename='images/{{ImgName}}.svg') }}" alt="">
+    {% if ImgName =="null" %}
+      <img class="msg" src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg">
+    {% else %}
+      <img class="msg" src="{{ url_for('static', filename='images/{{ImgName}}.svg') }}" alt=""> 
+    {% endif %}
     </div>
   </div>
 {% endblock body %}

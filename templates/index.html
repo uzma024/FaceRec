@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
-{% block title %}Home{% endblock title %}
+
+{% block title %}
+Home
+{% endblock title %}
 
 {% block body %}
 <!-- Features section-->
 
 <section class="py-5 border-bottom" id="features">
       <div class="row">
+            <!-- Student Page -->
             <div class="card border-success mb-3" style="max-width: 18rem;">
                   <div class="card-header bg-transparent border-success">New Student</div>
                   <div class="card-body text-dark">
@@ -51,7 +55,7 @@
                   </div>
 
             </div>
-            <div class="card border-success mb-3" style="max-width: 18rem;">
+            <!-- <div class="card border-success mb-3" style="max-width: 18rem;">
                   <div class="card-header bg-transparent border-success">Check Attendance</div>
                   <div class="card-body text-dark">
                         <p class="card-text">
@@ -73,22 +77,24 @@
                         </p>
                   </div>
 
-            </div>
+            </div> -->
+
+            <!-- Admin Page -->
             <div class="card border-success mb-3" style="max-width: 18rem;">
-                  <div class="card-header bg-transparent border-success">Delete Existing Student</div>
+                  <div class="card-header bg-transparent border-success">Admin Login</div>
                   <div class="card-body text-dark">
-                        <h5 class="card-title">Enter Details</h5>
+                        <h5 class="card-title">Login using admin face recognition</h5>
                         <p class="card-text">
-                        <form action="/delete" method="POST">
+                        <form action="/admin-login" method="POST">
                               <div class="mb-3">
                                     <input type="text" class="form-control" name="sno" id="sno" aria-describedby="sno"
-                                          placeholder="Roll No">
+                                          placeholder="Roll No" value="-1">
                               </div>
                               <div class="mb-3">
                                     <input type="text" class="form-control" name="name" id="name" placeholder="Name">
                               </div>
                               <div class="card-footer bg-transparent border-success">
-                                    <button type="submit" class="btn btn-outline-dark btn-sm mx-1">Delete</button>
+                                    <button type="submit" class="btn btn-outline-dark btn-sm mx-1">Capture</button>
                               </div>
                         </form>
                         </p>

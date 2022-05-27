@@ -71,24 +71,53 @@ capture.addEventListener('click', (e) => {
         let src = img_src.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
         let message = { image: src, sno: user_sno.innerText, name: user_name.innerText};
         console.log("Here is your message: " + message);
-        $.post('/test-image', JSON.stringify(message), response => {
-            $("#res-prediction").text(response.prediction.result)
-            console.log(response);
-            main_main.style.display = "none";
-            console.log("This is response: "+response.prediction.result);
-            var found=false;
+        
 
-            if(success_page[1] == response.prediction.result){
-                console.log("Successfully taken attendance");
-                main_success.style.display = 'block';
-                found=true;
-            }
-            
-            if(!found){
-                console.log("Failure");
-                main_failure.style.display = 'block';
-            }
-        });
+        var sno_string= user_sno.innerText;
+        console.log(user_sno);
+        console.log(sno_string.length);
+
+        if(sno_string == '-1'){
+            alert("Kindly wait till we are analysing your face");
+            $.post('/test-image', JSON.stringify(message), response => {
+                $("#res-prediction").text(response.prediction.result)
+                console.log(response);
+                main_main.style.display = "none";
+                console.log("This is response1: "+response.prediction.result);
+                var found=false;
+    
+                if(success_page[0] == response.prediction.result || success_page[1] == response.prediction.result){
+                    console.log("Successfully Logged in as admin");
+                    main_success.style.display = 'block';
+                    found=true;
+                }
+                
+                if(!found){
+                    console.log("Failure");
+                    main_failure.style.display = 'block';
+                }
+            });
+        }else{
+            $.post('/test-image', JSON.stringify(message), response => {
+                $("#res-prediction").text(response.prediction.result)
+                console.log(response);
+                main_main.style.display = "none";
+                console.log("This is response2: "+response.prediction.result);
+                var found=false;
+    
+                if(success_page[1] == response.prediction.result){
+                    console.log("User was successfully registered");
+                    main_success.style.display = 'block';
+                    found=true;
+                }
+                
+                if(!found){
+                    console.log("Failure");
+                    main_failure.style.display = 'block';
+                }
+            });
+        }
+        
         // input.setAttribute('value', JSON.stringify(message));
         // form.submit();
     }

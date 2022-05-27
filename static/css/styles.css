@@ -3,6 +3,13 @@
     text-align: center;
 }
 
+.msg{
+  margin: 3% 30% 5% 30%;
+  height: 40%;
+  width: 40%;
+  display: inline-block;
+}
+
 body{
     background-color: red;
 }
@@ -21,6 +28,15 @@ footer {
     width: 100%;
     text-align: center;
   }
+
+/* Admin css */
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
 
 /* FOR CAMERA PAGE  BEAUTIFIED RENDERING */
 main#main div.camera {
