@@ -12,6 +12,9 @@ import datetime
 import time
 import pandas as pd
 
+# print("current working directory is: ",os.getcwd())
+# curr_dir=os.getcwd()+"/Attendance";
+
 #n_faces_detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 mtcnn = MTCNN(image_size=240, margin=20,  post_process=False, keep_all=True, min_face_size=20) #initializing mtcnn for face detection
 resnet = InceptionResnetV1(pretrained='vggface2').eval()
@@ -101,7 +104,14 @@ def update_embeddings():
 def add_to_csv(subject,user_sno,user_name):
     # Add name to attendance list
     print("Subject:",subject)
-    path=os.path.join('/Users/uzmafirozkhan/Desktop/AttendanceFinal/Attendance/',subject)
+    # print("curr_dir :",curr_dir)
+    path = os.path.join('Attendance',subject)
+    if not os.path.isdir(path):
+        os.makedirs(path)
+        
+    # path_temp=os.path.join('/Attendance/',subject)
+    # path=os.path.join(curr_dir,path_temp)
+    print("Attendance Path is :",path)
     if not os.path.isdir(path):
         os.mkdir(path)
     # GET DATE AND TIME

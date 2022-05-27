@@ -4,6 +4,17 @@
 {% block body %}
 <!-- Features section-->
 <main id="main">
+      <div class="alert alert-dark" role="alert">
+            <p class="mb-0"> Give access to video.<i class="btn fas fa-video-slash"></i></p> 
+            <p class="mb-0">Click on<i class="btn fas fa-camera"></i>to capture your face.</p>
+      </div>
+      <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">Instructions!</h4>
+            <p>Kindly wait for sometime after clicking on capture (<i class="btn fas fa-camera"></i>)button.</p>
+            <hr>
+            <p class="mb-0">If the video gets frozen, unselect then select again the video access(<i
+                        class="btn fas fa-video-slash"></i>) button.</p>
+      </div>
       <div class="camera">
             <video autoplay="true" id="videoElement"></video>
             <canvas style="display: none;" id="canvas" width="320" height="240"></canvas>
@@ -100,7 +111,8 @@
                         <div class="card-body text-dark">
                               <p class="card-text">Check and edit student database.</p>
                               <div class="card-footer bg-transparent border-success">
-                                    <a href="/show-admin" type="button" class="btn btn-outline-dark btn-sm mx-1">Check Database</a>
+                                    <a href="/show-admin" type="button" class="btn btn-outline-dark btn-sm mx-1">Check
+                                          Database</a>
                                     <!-- <input href="/show-admin" type="button" value="Check Database"> -->
                               </div>
                         </div>
@@ -120,11 +132,11 @@
 
 <main class="result" id="failure" style="display: none">
       <div class="alert alert-danger alert-dismissible fade show">
-          <strong>Error!</strong> Failure, Unable to login as {{sno}} {{name}} .
-          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Error!</strong> Failure, Unable to login as {{sno}} {{name}} .
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
       </div>
       <img class="msg" src="{{ url_for('static', filename='images/Failure.svg') }}" alt="">
-  </main>
+</main>
 {% endblock body %}
 
 

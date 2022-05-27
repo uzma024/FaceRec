@@ -4,6 +4,17 @@
 
 {% block body %}
 <main id="main">
+    <div class="alert alert-dark" role="alert">
+        <p class="mb-0"> Give access to video.<i class="btn fas fa-video-slash"></i></p>
+        <p class="mb-0">Click on<i class="btn fas fa-camera"></i>to capture your face.</p>
+    </div>
+    <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading">Instructions!</h4>
+        <p>Kindly wait for sometime after clicking on capture (<i class="btn fas fa-camera"></i>)button.</p>
+        <hr>
+        <p class="mb-0">If the video gets frozen, unselect then select again the video access(<i
+                class="btn fas fa-video-slash"></i>) button.</p>
+    </div>
     <div class="camera">
         <video autoplay="true" id="videoElement"></video>
         <canvas style="display: none;" id="canvas" width="320" height="240"></canvas>
