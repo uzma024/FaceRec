@@ -6,7 +6,7 @@ All Students
 {% block body %}
 <div class="container">
     <h2>Student Database:</h2>
-    {% if allToStudents|length == 0 %}
+    {% if allToStudents|length <= 1%}
     <div class="alert alert-dark" role="alert">
         No Students.
     </div>

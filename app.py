@@ -13,12 +13,8 @@ from PIL import Image
 from pipeline import register, log,log2
 
 import pandas as pd
+import shutil
 
-# project module
-import Modules.show_attendance as show_attendance
-import Modules.takeImage as takeImage
-import Modules.trainImage as trainImage
-import Modules.automaticAttedance as automaticAttedance
 
 def text_to_speech(user_text):
     engine = pyttsx3.init()
@@ -212,12 +208,18 @@ def show():
 def delete():
     if request.method=="POST":
         sno= (request.form['sno'])
+        if sno == "-1":
+            print("Cannot remove admin.")
+            return render_template('message.html',ImgName="null",title="Faliure",message_head="Cannot remove admin", message='Please Enter valid serial number.')        
         temp = Student.query.filter_by(sno=sno).first()
+
+        location = "/Users/uzmafirozkhan/Desktop/AttendanceFinal/database"
+        path = os.path.join(location, temp.sno)
+        shutil.rmtree(path, ignore_errors=True)
+        # print("Very Dangerous test executed")
+
         db.session.delete(temp)
         db.session.commit()
-        location = "/Users/uzmafirozkhan/Desktop/AttendanceFinal/database"
-        path = os.path.join(location, sno)
-        os.remove(path)
         print(sno+" Deleted")
     return redirect("/")
 
@@ -237,11 +239,14 @@ def update():
 def delete_from_DB(sno):
     print(sno)
     temp = Student.query.filter_by(sno=sno).first()
+
+    location = "/Users/uzmafirozkhan/Desktop/AttendanceFinal/database"
+    path = os.path.join(location, temp.sno)
+    shutil.rmtree(path, ignore_errors=True)
+    print("Very Dangerous test executed")
+
     db.session.delete(temp)
     db.session.commit()
-    location = "/Users/uzmafirozkhan/Desktop/AttendanceFinal/database"
-    path = os.path.join(location, sno)
-    os.remove(path)
     return redirect("/show-admin")
 
 @app.route('/logout')
