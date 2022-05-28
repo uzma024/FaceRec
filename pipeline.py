@@ -1,9 +1,7 @@
-from PIL import Image
 import os
-import numpy as np
 from facenet_pytorch import MTCNN, InceptionResnetV1
 from torch.utils.data import DataLoader
-# from sp_model import realvfake
+# from sp_model import realvfake    
 from torchvision import datasets
 import matplotlib.pyplot as plt
 import torch
@@ -12,10 +10,6 @@ import datetime
 import time
 import pandas as pd
 
-# print("current working directory is: ",os.getcwd())
-# curr_dir=os.getcwd()+"/Attendance";
-
-#n_faces_detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 mtcnn = MTCNN(image_size=240, margin=20,  post_process=False, keep_all=True, min_face_size=20) #initializing mtcnn for face detection
 resnet = InceptionResnetV1(pretrained='vggface2').eval()
 mtcnn2 = MTCNN(image_size=240, margin=0, min_face_size=20) 
@@ -101,51 +95,54 @@ def update_embeddings():
     data = [embedding_list, name_list]
     torch.save(data, 'data.pt')
 
-def add_to_csv(subject,user_sno,user_name):
-    # Add name to attendance list
-    print("Subject:",subject)
-    # print("curr_dir :",curr_dir)
-    path = os.path.join('Attendance',subject)
-    if not os.path.isdir(path):
-        os.makedirs(path)
-        
-    # path_temp=os.path.join('/Attendance/',subject)
-    # path=os.path.join(curr_dir,path_temp)
-    print("Attendance Path is :",path)
-    if not os.path.isdir(path):
-        os.mkdir(path)
-    # GET DATE AND TIME
-    ts = time.time()
-    date = datetime.datetime.fromtimestamp(ts).strftime("%Y-%m-%d")
-    timeStamp = datetime.datetime.fromtimestamp(ts).strftime("%H:%M:%S")
-    Hour, Minute, Second = timeStamp.split(":")
-    # Assuming each class is of not more than 1 hr
-    # i.e. different hr means different class of same day
-    fileName = (
-        f"{path}/"
-        + subject
-        + "_"
-        + date
-        + "_"
-        + Hour
-        + ".csv"
-    )
-    # take out student name
-    # studentdetail_path = "/Users/uzmafirozkhan/Desktop/AttendanceFinal/StudentDetails/studentdetails.csv"
-    # df = pd.read_csv(studentdetail_path)
-    # Student_sno = df.loc[df["Enrollment"] == Student_sno]["Name"].values
-    # Data of file
-    if not os.path.isfile(fileName):
-        col_names = ["Enrollment number", "Name","Date", "Time"]
-        attendance = pd.DataFrame(columns=col_names)
-        attendance.loc[len(attendance)] = [user_sno,user_name,date,timeStamp]
-        attendance.to_csv(fileName, index=False)
-    else:
-        attendance = pd.DataFrame({'Enrollment number': [user_sno],
-                                    'Name': [user_name],
-                                    'Date': [date],
-                                    'Time': [timeStamp]})
-        attendance.to_csv(fileName, mode='a', index=False, header=False)
+# STUDENT ATTENDANCE
+def add_to_csv(subject,user_sno,user_name,date,timeStamp):
+    try:
+        # Add name to attendance list
+        print("Subject:",subject)
+        path = os.path.join('Attendance',subject)
+        if not os.path.isdir(path):
+            os.makedirs(path)
+
+        print("Attendance Path is :",path)
+        if not os.path.isdir(path):
+            os.mkdir(path)
+        # GET DATE AND TIME
+        ts = time.time()
+        if date == "":
+            date = datetime.datetime.fromtimestamp(ts).strftime("%Y-%m-%d")
+        if timeStamp=="":
+            timeStamp = datetime.datetime.fromtimestamp(ts).strftime("%H:%M:%S")
+            Hour, Minute, Second = timeStamp.split(":")
+        else:
+            Hour, Minute=timeStamp.split(":")
+        # Assuming each class is of not more than 1 hr
+        # i.e. different hours means different class of same day
+        fileName = (
+            f"{path}/"
+            + subject
+            + "_"
+            + date
+            + "_"
+            + Hour
+            + ".csv"
+        )
+        # Data of file
+        if not os.path.isfile(fileName):
+            col_names = ["Enrollment number", "Name","Date", "Time"]
+            attendance = pd.DataFrame(columns=col_names)
+            attendance.loc[len(attendance)] = [user_sno,user_name,date,timeStamp]
+            attendance.to_csv(fileName, index=False)
+        else:
+            attendance = pd.DataFrame({'Enrollment number': [user_sno],
+                                        'Name': [user_name],
+                                        'Date': [date],
+                                        'Time': [timeStamp]})
+            attendance.to_csv(fileName, mode='a', index=False, header=False)
+        return "Attendance Added"
+    except:
+        return "Could not add Attendance"
+
 
 def log2(image, user_sno):
     faces, probs = mtcnn(image, return_prob=True)
@@ -180,7 +177,6 @@ def log2(image, user_sno):
     # else:
     #     return 'Fake Face Detected'
 
-# STUDENT ATTENDANCE
 
 def log(image, user_sno ,user_name,subject):
     faces, probs = mtcnn(image, return_prob=True)

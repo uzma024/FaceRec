@@ -78,7 +78,7 @@ capture.addEventListener('click', (e) => {
         console.log(sno_string.length);
 
         if(sno_string == '-1'){
-            alert("Kindly wait till we are analysing your face");
+            alert("Kindly wait for sometime after clicking on capture button");
             $.post('/test-image', JSON.stringify(message), response => {
                 $("#res-prediction").text(response.prediction.result)
                 console.log(response);
