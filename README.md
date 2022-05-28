@@ -153,7 +153,7 @@ To run this module on your local device, follow these procedures:
 <img src="./readmeImages/invalid-roll-msg.png" width="400"/>
 
 ### Admin Portal & database through admin
-<img src="./readmeImages/AdminPortal.png" width="400"/>
+<img src="./readmeImages/adminPortal.png" width="400"/>
 <img src="./readmeImages/admin-show.png" width="400"/>
 
 
