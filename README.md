@@ -1,4 +1,4 @@
-<img src="brand.jpg" width="400" align="right" />
+<img src="./readmeImages/brand.jpg" width="400" align="right" />
 
 ## CONTENTS OF THIS FILE
 
@@ -7,11 +7,13 @@
 - Introduction
 - Model selection
 - Setup
+- Tech stack used
 - Configuration
 - App features
+- Other resources
+- Webapp walk-through
 - Installed modules
 - Maintainers
-- Other resources
 - References
 
 ## INTRODUCTION
@@ -76,6 +78,17 @@ To run this module on your local device, follow these procedures:
 
 ---
 
+## TECH STACK USED
+
+- Flask : for route setup, backend.
+- HTML, CSS & bootstrap : for front-end
+- Java-Script : for 
+- Sqlite Database for storing student details
+- Pytorch - python : for face recognition
+- CSV files for storing attendance.
+
+---
+
 ## CONFIGURATIONS
 
 - All files and depencies were made/tested/are functional on mac os and visual studio code ide.
@@ -84,7 +97,7 @@ To run this module on your local device, follow these procedures:
 
 ---
 
-## APP FEATURES
+## APP FEATURES / FUNCTIONALITIES
 
 - Automation of attendance system.
 
@@ -115,6 +128,57 @@ To run this module on your local device, follow these procedures:
   - All the attendance is added in csv files for easy transfer and management.
   - No need to manually check files, one can check them on portal too.
 
+- Most pages of app are responsive and workable on all screen sizes.
+
+---
+## OTHER RESOURCES
+
+- [Progess Journal](https://jmistudent-my.sharepoint.com/:x:/g/personal/uzma202000389_st_jmi_ac_in/EYKrSbF08gVBkayFC6bKo0wB26VB3CeR4GBQoCPqgt22hg?e=6szqHL)
+- [Youtube Video](https://github.com/uzma024)
+
+---
+## Walk Through of errors pages / Major portals
+### Database
+<img src="./readmeImages/database.png" width="600"/>
+
+### Landing page & capture page
+<img src="./readmeImages/home.png" width="400"/>
+<img src="./readmeImages/capture.png" width="400"/>
+
+### View option for students
+<img src="./readmeImages/view.png" width="400"/>
+
+### Invalid roll number in admin login
+<img src="./readmeImages/invalid-roll.png" width="400"/>
+<img src="./readmeImages/invalid-roll-msg.png" width="400"/>
+
+### Admin Portal & database through admin
+<img src="./readmeImages/AdminPortal.png" width="400"/>
+<img src="./readmeImages/admin-show.png" width="400"/>
+
+
+### Check Attendance
+<img src="./readmeImages/Check.png" width="400"/>
+<img src="./readmeImages/Check-output.png" width="400"/>
+
+### When duplicate Roll no is added 
+<img src="./readmeImages/duplicate-roll.png" width="400"/>
+<img src="./readmeImages/duplicate-roll-out.png" width="400"/>
+
+### When face is not authorized
+<img src="./readmeImages/FaceError.png" width="400"/>
+
+### Student registering with invalid roll number
+<img src="./readmeImages/invalid-std-roll.png" width="400"/>
+<img src="./readmeImages/invalid-std-roll-output.png" width="400"/>
+
+### Manually marking attendance 
+<img src="./readmeImages/manual.png" width="400"/>
+<img src="./readmeImages/manual-out.png" width="400"/>
+
+### Checking existing & non-existing attendance file
+<img src="./readmeImages/show-success.png" width="400"/>
+<img src="./readmeImages/show-failure.png" width="400"/>
 ---
 
 ## INSTALLED MODULES
@@ -160,13 +224,6 @@ zipp==3.8.0
 
 ---
 
-## OTHER RESOURCES
-
-- [Progess Journal](https://jmistudent-my.sharepoint.com/:x:/g/personal/uzma202000389_st_jmi_ac_in/EYKrSbF08gVBkayFC6bKo0wB26VB3CeR4GBQoCPqgt22hg?e=6szqHL)
-- [Youtube Video](https://github.com/uzma024)
-
----
-
 ## REFERENCES
 
 > For a full description of the face recognition model, visit the project page:
@@ -174,7 +231,11 @@ zipp==3.8.0
 > - https://github.com/hashes-jmi/HackJMI2-CheemsGamg
 
 ---
+## THE PROJECT STATUS
+ > Open For Contibution :)
+ > For bug fixes/ suggestions open Issues and Pull requests.
 
+ ---
 ## MAINTAINERS
 
 [@uzma024](https://github.com/uzma024)

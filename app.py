@@ -42,7 +42,7 @@ def take_image():
         print(Studentsno)
         if Studentsno == None:
             if sno[0]=='-':     # if sno is negative
-                return render_template("message.html",ImgName="present",title="Faliure",message_head="Invalid Rollno" ,message_body='Please enter valid rollno gnot starting with -')
+                return render_template("message.html",ImgName="present",title="Faliure",message_head="Invalid Rollno" ,message_body='Please enter valid rollno not starting with -')
             return render_template('captures.html', sno=sno,name=name)
         else:
             return render_template('message.html',ImgName="present",title="Faliure",message_head="Roll no already present" ,message_body='The user is already registered in the database')
