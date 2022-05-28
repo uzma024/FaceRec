@@ -1,6 +1,6 @@
 from flask import Flask, make_response, redirect,render_template, request,redirect,jsonify,url_for
 from flask_sqlalchemy import SQLAlchemy
-import pyttsx3
+# import pyttsx3
 import os, cv2
 
 from base64 import b64decode
@@ -169,7 +169,7 @@ def check_att():
         print("sub: ",sub)
         print("date: ",date)
         print("time: ",time)
-        if time.__len__()==1:
+        if time[0].__len__()==1:
             file_name=sub + '_' +date[0] + '-' +date[1] + '-' +date[2] + '_0' +time[0]+'.csv'
         else:
             file_name=sub + '_' +date[0] + '-' +date[1] + '-' +date[2] + '_' +time[0]+'.csv'
