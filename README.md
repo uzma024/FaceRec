@@ -4,13 +4,14 @@
 ---------------------
 
  * Introduction
- * Requirements
- * Recommended modules
- * Installation
+ * Model selection
+ * Setup
  * Configuration
- * Troubleshooting
- * FAQ
+ * App features
+ * Installed modules
  * Maintainers
+ * Other resources
+ * References
 
 ## INTRODUCTION
 ------------
@@ -29,10 +30,6 @@ After a bit of research on working of open cv and long discussions with ML enthu
 So i choose a model that utilised resnet and MTCNN of pytorch library, which actually did gave me better accuracy at face recognition. After adding and editing functions i was able to utilise the modules of this already developed face recognition model.
 
 I removed the spoof detection utility for smooth functioning and also for judges to be able to login through admin portal through my photo.
-
- * For a full description of the model, visit the project page:
-   https://github.com/hashes-jmi/HackJMI2-CheemsGamg
-
 
 --------------
 
@@ -110,3 +107,57 @@ APP FEATURES
     - All the attendance is added in csv files for easy transfer and management.
     - No need to manually check files, one can check them on portal too.
 --------------
+INSTALLED MODULES
+------------
+Can be found in [requirements.txt](https://github.com/uzma024/FaceRec/blob/main/requirements.txt)
+```
+certifi==2022.5.18.1
+charset-normalizer==2.0.12
+click==8.1.3
+cycler==0.11.0
+facenet-pytorch==2.5.2
+Flask==2.1.2
+Flask-SQLAlchemy==2.5.1
+fonttools==4.33.3
+greenlet==1.1.2
+idna==3.3
+importlib-metadata==4.11.4
+itsdangerous==2.1.2
+Jinja2==3.1.2
+kiwisolver==1.4.2
+MarkupSafe==2.1.1
+matplotlib==3.5.2
+numpy==1.22.4
+opencv-python==4.5.5.64
+packaging==21.3
+pandas==1.4.2
+Pillow==9.1.1
+pyparsing==3.0.9
+python-dateutil==2.8.2
+pytz==2022.1
+requests==2.27.1
+six==1.16.0
+SQLAlchemy==1.4.36
+torch==1.11.0
+torchvision==0.12.0
+typing_extensions==4.2.0
+urllib3==1.26.9
+Werkzeug==2.1.2
+zipp==3.8.0
+
+```
+--------------
+OTHER RESOURCES
+------------
+* [drive links](https://github.com/uzma024)
+* [Youtube Video](https://github.com/uzma024)
+--------------
+REFERENCES
+------------
+> For a full description of the face recognition model, visit the project page:
+> - https://github.com/hashes-jmi/HackJMI2-CheemsGamg
+
+--------------
+MAINTAINERS
+------------
+[@uzma024](https://github.com/uzma024)
