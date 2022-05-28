@@ -2,7 +2,7 @@
 {% block title %}Home{% endblock title %}
 
 {% block body %}
-<!-- Features section-->
+<!-- Camera section-->
 <main id="main">
       <div class="alert alert-dark" role="alert">
             <p class="mb-0"> Give access to video.<i class="btn fas fa-video-slash"></i></p>
@@ -28,6 +28,7 @@
       <h2 id="res-prediction"></h2>
 </main>
 
+<!-- Successfull athourization section-->
 <main class="result" id="success" style="display: none">
 
       <div class="alert alert-success alert-dismissible fade show">
@@ -135,13 +136,16 @@
                                                 aria-describedby="subject" placeholder="Subject">
                                     </div>
                                     <div class="mb-3">
-                                          <input type="date" class="form-control" name="date" id="date" placeholder="Date">
+                                          <input type="date" class="form-control" name="date" id="date"
+                                                placeholder="Date">
                                     </div>
                                     <div class="mb-3">
-                                          <input type="time" class="form-control" name="time" id="time" placeholder="Hour of the class">
+                                          <input type="time" class="form-control" name="time" id="time"
+                                                placeholder="Hour of the class">
                                     </div>
                                     <div class="card-footer bg-transparent border-success">
-                                          <button type="submit" class="btn btn-outline-dark btn-sm mx-1">Mark manually</button>
+                                          <button type="submit" class="btn btn-outline-dark btn-sm mx-1">Mark
+                                                manually</button>
                                     </div>
                               </form>
 
@@ -159,6 +163,7 @@
       <!-- <button href="/" class="btn btn-dark btn-lg">Home</button> -->
 </main>
 
+<!-- Failed athourization section-->
 <main class="result" id="failure" style="display: none">
       <div class="alert alert-danger alert-dismissible fade show">
             <strong>Error!</strong> Failure, Unable to login as {{sno}} {{name}} .

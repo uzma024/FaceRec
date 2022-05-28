@@ -1,7 +1,6 @@
 import os
 from facenet_pytorch import MTCNN, InceptionResnetV1
 from torch.utils.data import DataLoader
-# from sp_model import realvfake    
 from torchvision import datasets
 import matplotlib.pyplot as plt
 import torch
@@ -164,7 +163,7 @@ def log2(image, user_sno):
     fname = 'temp.jpg'
     img = face.permute(1, 2, 0).int().numpy().astype('uint8')
     plt.imsave(fname, img)
-    # if realvfake(fname):
+    
     out = face_match(image)
     print("Admin Check:",out)
     if out == False:
@@ -174,8 +173,6 @@ def log2(image, user_sno):
             return 'No Match Found'
         elif user_sno == -1:
             return out
-    # else:
-    #     return 'Fake Face Detected'
 
 
 def log(image, user_sno ,user_name,subject):
@@ -198,7 +195,7 @@ def log(image, user_sno ,user_name,subject):
     fname = 'temp.jpg'
     img = face.permute(1, 2, 0).int().numpy().astype('uint8')
     plt.imsave(fname, img)
-    # if realvfake(fname):
+    
     out = face_match(image)
     if out == False:
         return 'No Match Found'
@@ -209,5 +206,3 @@ def log(image, user_sno ,user_name,subject):
         # Add name to attendance list
             add_to_csv(subject,user_sno,user_name)
             return out
-    # else:
-    #     return 'Fake Face Detected'

@@ -1,39 +1,34 @@
 {% extends 'base.html' %}
+
 {% block title %}
 All Students
 {% endblock title %}
 
-{% block body %}
+{%block body %}
 <div class="container">
     <h2>Student Database:</h2>
-    {% if allToStudents|length <= 1 %}
-    <div class="alert alert-dark" role="alert">
-        No Students.
-    </div>
+
+    {% if allToStudents|length <= 1 %} 
+    <div class="alert alert-dark" role="alert">No Students.</div>
     {% else %}
     <table class="table">
         <thead>
             <tr>
                 <th scope="col">Sno</th>
                 <th scope="col">Name</th>
-                <!-- <th scope="col">Description</th>
-                <th scope="col">Time</th> -->
             </tr>
         </thead>
         <tbody>
-            {% for std in allToStudents %}
+            {% for std in allToStudents %} 
             {% if std.sno != "-1" %}
-                <tr>
-                    <th scope="row">{{std.sno}}</th>
-                    <td>{{std.name}}</td>
-                </tr>
-            {% endif %}
-
+            <tr>
+                <th scope="row">{{std.sno}}</th>
+                <td>{{std.name}}</td>
+            </tr>
+            {% endif %} 
             {% endfor %}
-
         </tbody>
     </table>
     {% endif %}
-
 </div>
 {% endblock body %}

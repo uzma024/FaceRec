@@ -6,8 +6,8 @@ All Students
 {% block body %}
 <div class="container">
     <h2>Student Database:</h2>
-    {% if allToStudents|length <= 1%}
-    <div class="alert alert-dark" role="alert">
+    {% if allToStudents|length <= 1%} 
+    <div class="alert alert-dark" role="alert"> 
         No Students.
     </div>
     {% else %}
@@ -16,8 +16,6 @@ All Students
             <tr>
                 <th scope="col">Sno</th>
                 <th scope="col">Name</th>
-                <!-- <th scope="col">Description</th>
-                <th scope="col">Time</th> -->
             </tr>
         </thead>
         <tbody>
@@ -27,12 +25,10 @@ All Students
                 <th scope="row">{{std.sno}}</th>
                 <td>{{std.name}}</td>
                 <td>
-                    <!-- <a href="/update/{{std.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Edit</a> -->
                     <a href="/delete/{{std.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Delete</a>
                 </td>
             </tr>
             {% endif %}
-
             {% endfor %}
 
         </tbody>

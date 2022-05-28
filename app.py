@@ -1,6 +1,5 @@
 from flask import Flask, make_response, redirect,render_template, request,redirect,jsonify,url_for
 from flask_sqlalchemy import SQLAlchemy
-# import pyttsx3
 import os, cv2
 
 from base64 import b64decode
@@ -166,9 +165,9 @@ def check_att():
         sub= request.form['subject']
         date= request.form['date'].split("-")
         time= request.form['time'].split(":")
-        print("sub: ",sub)
-        print("date: ",date)
-        print("time: ",time)
+        # print("sub: ",sub)
+        # print("date: ",date)
+        # print("time: ",time)
         if time[0].__len__()==1:
             file_name=sub + '_' +date[0] + '-' +date[1] + '-' +date[2] + '_0' +time[0]+'.csv'
         else:
@@ -243,7 +242,7 @@ def delete_from_DB(sno):
 
     path = os.path.join('database',temp.sno)
     shutil.rmtree(path, ignore_errors=True)
-    print("Very Dangerous test executed")
+    # print("Very Dangerous test executed")
 
     db.session.delete(temp)
     db.session.commit()

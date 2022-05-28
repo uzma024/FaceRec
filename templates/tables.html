@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% block title %}
-    Show Attendance
+Show Attendance
 {% endblock title %}
 
 {% block body %}
-    <div align="center">
-        <table class="table">
-            <h1>
+<div align="center">
+    <table class="table">
+        <h1>
             <!--Displaying the converted table-->
-                {% for table in tables %}
-                <h2 style="color: blue;">{{titles[loop.index]}}</h2>                            
-                {{ table|safe }}
-                {% endfor %}     
-            </h1> 
-        </table>
-    </div>
+            {% for table in tables %}
+            <h2>{{titles[loop.index]}}</h2>
+            {{ table|safe }}
+            {% endfor %}
+        </h1>
+    </table>
+</div>
 {% endblock body %}

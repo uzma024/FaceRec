@@ -1,159 +1,157 @@
-#pricing{
-    padding: 100px;
-    text-align: center;
+#pricing {
+  padding: 100px;
+  text-align: center;
 }
 
-.msg{
+.msg {
   margin: 3% 30% 5% 30%;
   height: 40%;
   width: 40%;
   display: inline-block;
 }
 
-.msg2{
+.msg2 {
   margin: 3% 3% 3% 3%;
   height: 70%;
   width: 70%;
   display: inline-block;
 }
 
-body{
-    background-color: red;
-}
-.row{
-    padding: 5% 7%;
+.row {
+  padding: 5% 7%;
 }
 
-.card{
-    margin: 2% 5%;
-  padding-bottom :5px ;
-    /* display: inline-block; */
-}
-.card-deck{
-  padding-right: 30px;
-  padding-top :5px ;
+.card {
+  margin: 2% 5%;
+  padding-bottom: 5px;
 }
 
 footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-  }
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
 
 /* Admin css */
 .divider:after,
 .divider:before {
-content: "";
-flex: 1;
-height: 1px;
-background: #eee;
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
 }
 
 /* FOR CAMERA PAGE  BEAUTIFIED RENDERING */
 main#main div.camera {
-    height: 100%;
-    width: 100%;
-    background-color: white;
-    border-radius: 10px;
-    -webkit-box-shadow: 0px 0px 15px 0px black;
-            box-shadow: 0px 0px 15px 0px black;
-  }
-  
-  main#main div.camera video#videoElement {
-    height: 100%;
-    width: 100%;
-    background-color: #212121;
-    -webkit-transform: scaleX(-1);
-            transform: scaleX(-1);
-  }
-  
-  main#main div.camera {
-    margin: 3% 20%;
-    height: 70%;
-    width: 60%;
-    background-color: white;
-    border-radius: 10px;
-    -webkit-box-shadow: 0px 0px 15px 0px black;
-            box-shadow: 0px 0px 15px 0px black;
-  }
-  
-  main#main div.camera video#videoElement {
-    /* margin: 10% 25%; */
-    height: 100%;
-    width: 100%;
-    background-color: #212121;
-    -webkit-transform: scaleX(-1);
-            transform: scaleX(-1);
-  }
-  
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 15px 0px black;
+  box-shadow: 0px 0px 15px 0px black;
+}
+
+main#main div.camera video#videoElement {
+  height: 100%;
+  width: 100%;
+  background-color: #212121;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+main#main div.camera {
+  margin: 3% 20%;
+  height: 70%;
+  width: 60%;
+  background-color: white;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 15px 0px black;
+  box-shadow: 0px 0px 15px 0px black;
+}
+
+main#main div.camera video#videoElement {
+  /* margin: 10% 25%; */
+  height: 100%;
+  width: 100%;
+  background-color: #212121;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+main#main div.controls {
+  position: absolute;
+  top: 500px;
+  right: 25px;
+  background-color: transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+@media (max-width: 780px) {
   main#main div.controls {
-    position: absolute;
-    top: 500px;
-    right: 25px;
-    background-color: transparent;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    top: 35px;
+    right: 35px;
   }
-  
-  @media (max-width: 780px) {
-    main#main div.controls {
-      top: 35px;
-      right: 35px;
-    }
+}
+
+@media (max-width: 500px) {
+  main#main div.controls {
+    top: 15px;
+    right: 15px;
   }
-  
-  @media (max-width: 500px) {
-    main#main div.controls {
-      top: 15px;
-      right: 15px;
-    }
+}
+
+main#main button#stop,
+main#main button#capture {
+  height: 52px;
+  width: 52px;
+  padding: 0.5px 0px;
+  border-radius: 50%;
+  background-color: #ff7575;
+  cursor: pointer;
+  z-index: 5;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 780px) {
+  main#main button#stop,
+  main#main button#capture {
+    height: 45px;
+    width: 45px;
   }
-  
-  main#main button#stop, main#main button#capture {
-    height: 52px;
-    width: 52px;
-    padding: .5px 0px;
-    border-radius: 50%;
-    background-color: #ff7575;
-    cursor: pointer;
-    z-index: 5;
-    margin-bottom: 10px;
+}
+
+@media (max-width: 500px) {
+  main#main button#stop,
+  main#main button#capture {
+    height: 40px;
+    width: 40px;
   }
-  
-  @media (max-width: 780px) {
-    main#main button#stop, main#main button#capture {
-      height: 45px;
-      width: 45px;
-    }
+}
+
+main#main button#stop i.btn,
+main#main button#capture i.btn {
+  padding: 7px;
+  font-size: 2rem;
+}
+
+@media (max-width: 780px) {
+  main#main button#stop i.btn,
+  main#main button#capture i.btn {
+    font-size: 1.7rem;
   }
-  
-  @media (max-width: 500px) {
-    main#main button#stop, main#main button#capture {
-      height: 40px;
-      width: 40px;
-    }
+}
+
+@media (max-width: 500px) {
+  main#main button#stop i.btn,
+  main#main button#capture i.btn {
+    font-size: 1.55rem;
   }
-  
-  main#main button#stop i.btn, main#main button#capture i.btn {
-      padding: 7px;
-    font-size: 2rem;
-  }
-  
-  @media (max-width: 780px) {
-    main#main button#stop i.btn, main#main button#capture i.btn {
-      font-size: 1.7rem;
-    }
-  }
-  
-  @media (max-width: 500px) {
-    main#main button#stop i.btn, main#main button#capture i.btn {
-      font-size: 1.55rem;
-    }
-  }
+}

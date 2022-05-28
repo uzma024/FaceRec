@@ -4,6 +4,7 @@
 
 {% block body %}
 <main id="main">
+    <!-- INSTRUCTIONS -->
     <div class="alert alert-dark" role="alert">
         <p class="mb-0"> Give access to video.<i class="btn fas fa-video-slash"></i></p>
         <p class="mb-0">Click on<i class="btn fas fa-camera"></i>to capture your face.</p>
@@ -15,6 +16,8 @@
         <p class="mb-0">If the video gets frozen, unselect then select again the video access(<i
                 class="btn fas fa-video-slash"></i>) button.</p>
     </div>
+
+    <!-- Camera -->
     <div class="camera">
         <video autoplay="true" id="videoElement"></video>
         <canvas style="display: none;" id="canvas" width="320" height="240"></canvas>
@@ -29,6 +32,7 @@
     <h2 id="res-prediction"></h2>
 </main>
 
+<!-- Successfull athourization section-->
 <main class="result" id="att_success" style="display: none">
     <div class="alert alert-success alert-dismissible fade show">
         <strong>Success!</strong> Successfully Marked {{name}}'s attendance for {{subject}}.
@@ -38,6 +42,7 @@
     <!-- <button href="/" class="btn btn-dark btn-lg">Home</button> -->
 </main>
 
+<!-- Failed athourization section-->
 <main class="result" id="failure" style="display: none">
     <div class="alert alert-danger alert-dismissible fade show">
         <strong>Error!</strong> You are not a registered student.Your attendance was not marked.
