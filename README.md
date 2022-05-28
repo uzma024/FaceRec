@@ -133,7 +133,11 @@ To run this module on your local device, follow these procedures:
 ---
 ## OTHER RESOURCES
 
+
 - [Progess Journal](https://jmistudent-my.sharepoint.com/:x:/g/personal/uzma202000389_st_jmi_ac_in/EYKrSbF08gVBkayFC6bKo0wB26VB3CeR4GBQoCPqgt22hg?e=6szqHL)
+
+- [System Architecture/ER diagram](https://jmistudent-my.sharepoint.com/:b:/g/personal/uzma202000389_st_jmi_ac_in/EdEJQ8exDrtIp3eJ-2QsD9cB34tH4ZnvM-IEPVKCkz-W3A?e=ycl2g0)
+
 - [Youtube Video](https://github.com/uzma024)
 
 ---
