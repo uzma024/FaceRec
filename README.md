@@ -162,7 +162,7 @@ zipp==3.8.0
 
 ## OTHER RESOURCES
 
-- [drive links](https://github.com/uzma024)
+- [Progess Journal](https://jmistudent-my.sharepoint.com/:x:/g/personal/uzma202000389_st_jmi_ac_in/EYKrSbF08gVBkayFC6bKo0wB26VB3CeR4GBQoCPqgt22hg?e=6szqHL)
 - [Youtube Video](https://github.com/uzma024)
 
 ---
