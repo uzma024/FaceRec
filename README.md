@@ -28,13 +28,19 @@
 After my initial open cv model failed to differentiate between me and my sister, i went on a quest to search a better model.
 After a bit of research on working of open cv and long discussions with ML enthusiasts resulted in following highlights:
 
-- Open CV uses machine learning algorithms as old as 7 years.
+- Open CV uses traditional machine learning algorithms.
 - It does not support fine-tuning and training.
 - It is generally better to let the algorithms determine the intermediate feature layers than to use algorthims to define them explicitly.
+- So we should let the algorithm "learn" to extract the right set of features rather than hand-crafting them and feeding them to an algorithm.
 
-So i choose a model that utilised resnet and MTCNN of pytorch library, which actually did gave me better accuracy at face recognition. After adding and editing functions i was able to utilise the modules of an already developed face recognition model.
+The machine learning pipeline that i used has following features:
 
-I removed the spoof detection utility for smooth functioning and also for judges to be able to login to admin portal through a photo.
+1. We perform face detection using MTCNN. And only if one face is detected will the pipeline move ahead.
+
+2. Crop out only the detected face.
+
+3. For Face Recognition, we used Inception-Resnet as a siamese network to compute embedding of the new face and compare its distance from all the face embeddings present in the database to find the closest match. If the distance (p-norm) was under a threshold of 0.8 then the user will be recognised.
+
 
 ---
 
@@ -76,6 +82,7 @@ To run this module on your local device, follow these procedures:
    ```
 6. cmd + Click on the link to run app server in the browser
 
+7. To access admin portal, you may use my photo from [database](https://github.com/uzma024/FaceRec/tree/main/database/-1).
 ---
 
 ## TECH STACK USED
@@ -90,7 +97,7 @@ To run this module on your local device, follow these procedures:
 
 ## CONFIGURATIONS
 
-- All files and depencies were made/tested/are functional on mac os and visual studio code ide.
+- All files and depencies were made/tested/are functional on mac and linux os and visual studio code ide.
 - But special care was taken to make the app functional in other configurations too.
 - And the testing for same is under progress.
 
@@ -186,7 +193,8 @@ To run this module on your local device, follow these procedures:
 
 ## INSTALLED MODULES
 
-Can be found in [requirements.txt](https://github.com/uzma024/FaceRec/blob/main/requirements.txt)
+Python 3 will be required for the app to run.
+other modules can also be found in [requirements.txt](https://github.com/uzma024/FaceRec/blob/main/requirements.txt)
 
 ```
 certifi==2022.5.18.1
