@@ -21,7 +21,7 @@
 ---
 
 > When i first saw the attendance management system as a topic for the Microsoft Engage program, instantly the picture of my professors consuming our whole break to take attendance clicked in my mind.
-> Attendance system through face recognition not only automates the entire process and saves time, but it also reduces the chances of unfare advantage and proxy. It can also be further extended to avoid spoof detection.
+> Attendance system through face recognition not only automates the entire process and saves time, but it also reduces the chances of unfare advantage and proxy. It can also be further extended to avoid spoof.
 
 ## MODEL SELECTION
 
@@ -137,7 +137,7 @@ To run this module on your local device, follow these procedures:
 
 - [System Architecture/ER diagram](https://jmistudent-my.sharepoint.com/:b:/g/personal/uzma202000389_st_jmi_ac_in/EdEJQ8exDrtIp3eJ-2QsD9cB34tH4ZnvM-IEPVKCkz-W3A?e=ycl2g0)
 
-- [Youtube Video](https://github.com/uzma024)
+- [Youtube Video](https://youtu.be/3iIaFR0SCtg)
 
 ---
 ## Walk Through of Major pages
