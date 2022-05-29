@@ -34,7 +34,7 @@ After a bit of research on working of open cv and long discussions with ML enthu
 
 So i choose a model that utilised resnet and MTCNN of pytorch library, which actually did gave me better accuracy at face recognition. After adding and editing functions i was able to utilise the modules of an already developed face recognition model.
 
-I removed the spoof detection utility for smooth functioning and also for judges to be able to login to admin portal through my photo.
+I removed the spoof detection utility for smooth functioning and also for judges to be able to login to admin portal through a photo.
 
 ---
 
@@ -64,7 +64,7 @@ To run this module on your local device, follow these procedures:
    ```
 4. Install the dependencies mentioned in requirement files using conda or pip
    ```
-   pip install -r rquirements.txt
+   pip install -r requirements.txt
    ```
 5. run the app.py file using
    ```
@@ -81,8 +81,7 @@ To run this module on your local device, follow these procedures:
 ## TECH STACK USED
 
 - Flask : for route setup, backend.
-- HTML, CSS & bootstrap : for front-end
-- Java-Script : for 
+- HTML, CSS & bootstrap & JavaScript: for front-end
 - Sqlite Database for storing student details
 - Pytorch - python : for face recognition
 - CSV files for storing attendance.
@@ -125,10 +124,10 @@ To run this module on your local device, follow these procedures:
   - Manual Attendence in-case of emergencies, exceptions etc.
 
 - Attendance management:
-  - All the attendance is added in csv files for easy transfer and management.
+  - All of the attendance is added in csv files for easy transfer and management.
   - No need to manually check files, one can check them on portal too.
 
-- Most pages of app are responsive and workable on all screen sizes.
+- Most pages of app are fully responsive and workable on all screen sizes.
 
 ---
 ## OTHER RESOURCES
@@ -141,7 +140,7 @@ To run this module on your local device, follow these procedures:
 - [Youtube Video](https://github.com/uzma024)
 
 ---
-## Walk Through of errors pages / Major portals
+## Walk Through of Major pages
 ### Database
 <img src="./readmeImages/database.png" width="600"/>
 
