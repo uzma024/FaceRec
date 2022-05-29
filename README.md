@@ -240,6 +240,8 @@ zipp==3.8.0
 > For a full description of the face recognition model, visit the project page:
 >
 > - https://github.com/hashes-jmi/HackJMI2-CheemsGamg
+> Siamese network: 
+> - https://medium.com/wicds/face-recognition-using-siamese-networks-84d6f2e54ea4
 
 ---
 ## THE PROJECT STATUS
