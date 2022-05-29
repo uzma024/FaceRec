@@ -222,7 +222,7 @@ def delete():
 
         db.session.delete(temp)
         db.session.commit()
-    return redirect("/")
+    return redirect("/show-admin")
 
 @app.route("/update",methods=['GET','POST'])
 def update():

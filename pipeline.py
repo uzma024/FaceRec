@@ -99,26 +99,28 @@ def add_to_csv(subject,user_sno,user_name,date,timeStamp):
     try:
         # Add name to attendance list
         print("Subject:",subject)
-        path = os.path.join('Attendance',subject)
-        if not os.path.isdir(path):
-            os.makedirs(path)
+        p = os.path.join(os.getcwd(),'Attendance',subject)
+        if not os.path.isdir(p):
+            os.makedirs(p)
 
-        print("Attendance Path is :",path)
-        if not os.path.isdir(path):
-            os.mkdir(path)
+        
+        if not os.path.isdir(p):
+            os.mkdir(p)
+        print("Attendance Path is :",p)
+        print(date)
         # GET DATE AND TIME
         ts = time.time()
-        if date == "":
-            date = datetime.datetime.fromtimestamp(ts).strftime("%Y-%m-%d")
-        if timeStamp=="":
-            timeStamp = datetime.datetime.fromtimestamp(ts).strftime("%H:%M:%S")
-            Hour, Minute, Second = timeStamp.split(":")
-        else:
-            Hour, Minute=timeStamp.split(":")
+        # if date == "":
+        #     date = datetime.datetime.fromtimestamp(ts).strftime("%Y-%m-%d")
+        # if timeStamp=="":
+        #     timeStamp = datetime.datetime.fromtimestamp(ts).strftime("%H:%M")
+        #     # Hour, Minute, Second = timeStamp.split(":")
+        
+        Hour, Minute=timeStamp.split(":")
         # Assuming each class is of not more than 1 hr
         # i.e. different hours means different class of same day
         fileName = (
-            f"{path}/"
+            f"{p}/"
             + subject
             + "_"
             + date
@@ -127,17 +129,21 @@ def add_to_csv(subject,user_sno,user_name,date,timeStamp):
             + ".csv"
         )
         # Data of file
+        print("file name:",fileName)
         if not os.path.isfile(fileName):
+            print("is not pr")
             col_names = ["Enrollment number", "Name","Date", "Time"]
             attendance = pd.DataFrame(columns=col_names)
             attendance.loc[len(attendance)] = [user_sno,user_name,date,timeStamp]
             attendance.to_csv(fileName, index=False)
         else:
+            print("is pr")
             attendance = pd.DataFrame({'Enrollment number': [user_sno],
                                         'Name': [user_name],
                                         'Date': [date],
                                         'Time': [timeStamp]})
             attendance.to_csv(fileName, mode='a', index=False, header=False)
+        print("Attendance Added")
         return "Attendance Added"
     except:
         return "Could not add Attendance"
@@ -204,5 +210,8 @@ def log(image, user_sno ,user_name,subject):
             return 'No Match Found'
         else:
         # Add name to attendance list
-            add_to_csv(subject,user_sno,user_name)
+            ts = time.time()
+            date = datetime.datetime.fromtimestamp(ts).strftime("%Y-%m-%d")
+            timeStamp = datetime.datetime.fromtimestamp(ts).strftime("%H:%M")
+            add_to_csv(subject,user_sno,user_name,date,timeStamp)
             return out
