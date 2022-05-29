@@ -35,11 +35,11 @@ After a bit of research on working of open cv and long discussions with ML enthu
 
 The machine learning pipeline that i used has following features:
 
-1. We perform face detection using MTCNN. And only if one face is detected will the pipeline move ahead.
+1. It performs face detection using MTCNN. And only if one face is detected will the pipeline move ahead.
 
 2. Crop out only the detected face.
 
-3. For Face Recognition, we used Inception-Resnet as a siamese network to compute embedding of the new face and compare its distance from all the face embeddings present in the database to find the closest match. If the distance (p-norm) was under a threshold of 0.8 then the user will be recognised.
+3. For Face Recognition,Inception-Resnet was used as a siamese network to compute embedding of the new face and compare its distance from all the face embeddings present in the database to find the closest match. If the distance (p-norm) was under a threshold of 0.8 then the user will be recognised.
 
 
 ---
@@ -189,6 +189,7 @@ To run this module on your local device, follow these procedures:
 ### Checking existing & non-existing attendance file
 <img src="./readmeImages/show-success.png" width="400"/>
 <img src="./readmeImages/show-failure.png" width="400"/>
+
 ---
 
 ## INSTALLED MODULES
