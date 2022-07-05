@@ -144,7 +144,7 @@ To run this module on your local device, follow these procedures:
 
 - [System Architecture/ER diagram](https://jmistudent-my.sharepoint.com/:b:/g/personal/uzma202000389_st_jmi_ac_in/EdEJQ8exDrtIp3eJ-2QsD9cB34tH4ZnvM-IEPVKCkz-W3A?e=ycl2g0)
 
-- [Youtube Video](https://youtu.be/3iIaFR0SCtg)
+<!-- - [Youtube Video](https://youtu.be/3iIaFR0SCtg) -->
 
 ---
 ## Walk Through of Major pages

@@ -1,6 +1,8 @@
+#.DS_Store
+.DS_Store
+
 # Private Images
-TrainingImage/
-database/
+adminImage/
 temp.jpg
  
 # Byte-compiled / optimized / DLL files
